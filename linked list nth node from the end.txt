@@ -1,0 +1,72 @@
+/*linked list nth node from the end*/
+#include <iostream>
+using namespace std;
+class Node {
+    public:
+    int Value;
+    Node* Next;
+};
+class LinkedList {
+    public:
+    Node* head;
+        LinkedList(){
+        head=NULL;
+    }
+};
+void creatList(){
+    Node* head=new Node();
+    Node* second=new Node();
+    Node* third=new Node();
+    head->Value=1;
+    head->Next=second;
+    second->Value=2;
+    second->Next=third;
+    third->Value=3;
+    third->Next=NULL;
+}
+void printlist(){//(Node*n){
+    Node*n;
+    while (n!=NULL){
+        cout<<n->Value<<endl;
+        n=n->Next;
+    }
+}
+void remove (int k){
+Node* ptr=head;
+Node* prev=NULL;
+
+while(ptr!=NULL){
+    if(ptr->Value==k) {
+        prev->Next=ptr->Next;
+        ptr->Next=NULL;
+        ptr=NULL;
+        delete ptr;
+        break;
+    }
+    else {
+        prev=ptr;
+        ptr=ptr->Next;
+        }
+    }
+}
+void removeFromEnd (Node* head, int n){
+        Node *fast = head, *slow = head;
+            int counter=1;
+        while (fast!=NULL){
+            if(counter>n){
+                slow = slow->next;
+            }
+            fast = fast->next;
+            counter++;
+        }
+        
+    }
+};
+int main()
+{
+LinkedList ll;
+ll.creatList();
+    ll.printlist();
+    ll.remove(2);
+    return 0;
+}
